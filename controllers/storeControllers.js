@@ -13,9 +13,8 @@ const createStore = async (req, res, next) => {
   try {
   await store.save()
   } catch (error) {
-    
+    console.log(error)
   }
-console.log(store)
   res.send({store: store})
 }
 

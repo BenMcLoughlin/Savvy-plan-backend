@@ -2,7 +2,7 @@
   "env": {
     "DB_USER": "test123",
     "DB_PASSWORD": "test123",
-    "DB_NAME": "mern",
+    "DB_NAME": "savvyplan",
     "JWT_KEY": "supersecret_dont_share"
   }
 }
