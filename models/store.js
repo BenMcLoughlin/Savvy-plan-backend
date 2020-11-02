@@ -1,215 +1,282 @@
-
-
-const mongoose = require('mongoose');
+const { ObjectID } = require("mongodb");
+const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
-const Stream = require("./streamSchemaType")
+const Stream = require("./schemaTypes/streamSchemaType");
+const UserVariables = require("./schemaTypes/userSchemaType");
 
 const storeSchema = new Schema({
+  stream_reducer: { type: Map, of: Stream },
   ui_reducer: {
-    colorIndex:{
-      type: Number, 
+    colorIndex: {
+      type: Number,
       required: true,
     },
     dualSelectValue: {
-      type: String, 
+      type: Boolean,
+      required: true,
+    },
+    newStream: {
+      type: Boolean,
       required: true,
     },
     progress: {
-      type: Number, 
-      required: true,
-    },
-    selectedAccount: {
-      type: String, 
-      required: true,
-    },
-    selectedUser: {
-      type: String, 
-      required: true,
-    },
-    selectedId: {
-      type: String, 
-      required: true,
-    },
-    selectedPage: {
-      type: String, 
-      required: true,
-    },
-    selectedScenario: {
-      type: Number, 
+      type: Number,
       required: true,
     },
     scenarios: {
-      type: Number, 
+      type: Map,
+      required: true,
+    },
+    selectedAccount: {
+      type: String,
+      required: true,
+    },
+    selectedId: {
+      type: String,
+      required: true,
+    },
+    selectedPage: {
+      type: String,
+      required: true,
+    },
+    selectedScenario: {
+      type: Number,
+      required: true,
+    },
+    selectedUser: {
+      type: String,
       required: true,
     },
   },
   user_reducer: {
-    hasUnsecuredDebt: {
-      type: Boolean, 
+    desiredRetirementIncome: {
+      type: Number,
       required: true,
     },
     hasChildrenStatus: {
-      type: String, 
-      required: true,
+      type: String,
     },
     inflationRate: {
-      type: Number, 
+      type: Number,
       required: true,
     },
-    ownHome: {
-      type: Boolean, 
+    maritalStatus: {
+      type: String,
+      required: true,
+    },
+    MER: {
+      type: Number,
       required: true,
     },
     numberOfChildren: {
-      type: Number, 
+      type: Number,
       required: true,
     },
     province: {
-      type: String, 
+      type: String,
       required: true,
     },
-    user1: {
-      birthYear: {
-        type: Number, 
-        required: true,
-      },
-      firstName: {
-        type: String, 
-        required: true,
-      },
-     hasChildren: {
-        type: Boolean, 
-        required: true,
-      },
-     isMarried: {
-        type: Boolean, 
-        required: true,
-      },
-      gender: {
-        type: String, 
-        required: true,
-      },
+    rate1: {
+      type: Number,
+      required: true,
     },
-    user2: {
-      birthYear: {
-        type: Number, 
-        required: true,
-      },
-      firstName: {
-        type: String, 
-        required: true,
-      },
-      gender: {
-        type: String, 
-        required: true,
-      },
+    rate2: {
+      type: Number,
+      required: true,
     },
+    user1: UserVariables,
+    user2: UserVariables,
   },
-  stream_reducer: {type: Map, of: Stream},
-})
+  userId: { type: ObjectID },
+});
 
-module.exports = mongoose.model('Stream', storeSchema);
+// const storeSchema = new Schema({
+//   ui_reducer: {
+//     colorIndex: {
+//       type: Number,
+//       required: true,
+//     },
+//     dualSelectValue: {
+//       type: Boolean,
+//       required: true,
+//     },
+//     newStream: {
+//       type: Boolean,
+//       required: true,
+//     },
+//     progress: {
+//       type: Number,
+//       required: true,
+//     },
+//     scenarios: {
+//       type: Map,
+//       required: true,
+//     },
+//     selectedAccount: {
+//       type: String,
+//       required: true,
+//     },
+//     selectedId: {
+//       type: String,
+//       required: true,
+//     },
+//     selectedPage: {
+//       type: String,
+//       required: true,
+//     },
+//     selectedScenario: {
+//       type: Number,
+//       required: true,
+//     },
+//     selectedUser: {
+//       type: String,
+//       required: true,
+//     },
+//   },
+//   user_reducer: {
+//     desiredRetirementIncome: {
+//       type: Number,
+//       required: true,
+//     },
+//     hasChildrenStatus: {
+//       type: String,
+//       required: true,
+//     },
+//     inflationRate: {
+//       type: Number,
+//       required: true,
+//     },
+//     maritalStatus: {
+//       type: String,
+//       required: true,
+//     },
+//     MER: {
+//       type: Number,
+//       required: true,
+//     },
+//     numberOfChildren: {
+//       type: Number,
+//       required: true,
+//     },
+//     province: {
+//       type: String,
+//       required: true,
+//     },
+//     rate1: {
+//       type: Number,
+//       required: true,
+//     },
+//     rate2: {
+//       type: Number,
+//       required: true,
+//     },
+//     user1: UserVariables,
+//     user2: UserVariables,
+//   },
+//   stream_reducer: { type: Map, of: Stream },
+//   // userId: { type: ObjectID },
+// });
 
-
+module.exports = mongoose.model("Stream", storeSchema);
 
 // const storeSchema = new Schema({
 //   ui_reducer: {
 //     colorIndex:{
-//       type: Number, 
+//       type: Number,
 //       required: true,
 //     },
 //     dualSelectValue: {
-//       type: String, 
+//       type: String,
 //       required: true,
 //     },
 //     progress: {
-//       type: Number, 
+//       type: Number,
 //       required: true,
 //     },
 //     selectedAccount: {
-//       type: String, 
+//       type: String,
 //       required: true,
 //     },
 //     selectedUser: {
-//       type: String, 
+//       type: String,
 //       required: true,
 //     },
 //     selectedId: {
-//       type: String, 
+//       type: String,
 //       required: true,
 //     },
 //     selectedPage: {
-//       type: String, 
+//       type: String,
 //       required: true,
 //     },
 //     selectedScenario: {
-//       type: Number, 
+//       type: Number,
 //       required: true,
 //     },
 //     scenarios: {
-//       type: Number, 
+//       type: Number,
 //       required: true,
 //     },
 //   },
 //   user_reducer: {
 //     hasUnsecuredDebt: {
-//       type: Boolean, 
+//       type: Boolean,
 //       required: true,
 //     },
 //     hasChildrenStatus: {
-//       type: String, 
+//       type: String,
 //       required: true,
 //     },
 //     inflationRate: {
-//       type: Number, 
+//       type: Number,
 //       required: true,
 //     },
 //     ownHome: {
-//       type: Boolean, 
+//       type: Boolean,
 //       required: true,
 //     },
 //     numberOfChildren: {
-//       type: Number, 
+//       type: Number,
 //       required: true,
 //     },
 //     province: {
-//       type: Number, 
+//       type: Number,
 //       required: true,
 //     },
 //     user1: {
 //       birthYear: {
-//         type: Number, 
+//         type: Number,
 //         required: true,
 //       },
 //       firstName: {
-//         type: Number, 
+//         type: Number,
 //         required: true,
 //       },
 //      hasChildren: {
-//         type: Boolean, 
+//         type: Boolean,
 //         required: true,
 //       },
 //      isMarried: {
-//         type: Boolean, 
+//         type: Boolean,
 //         required: true,
 //       },
 //       gender: {
-//         type: String, 
+//         type: String,
 //         required: true,
 //       },
 //     },
 //     user2: {
 //       birthYear: {
-//         type: Number, 
+//         type: Number,
 //         required: true,
 //       },
 //       firstName: {
-//         type: Number, 
+//         type: Number,
 //         required: true,
 //       },
 //       gender: {
-//         type: String, 
+//         type: String,
 //         required: true,
 //       },
 //     },
