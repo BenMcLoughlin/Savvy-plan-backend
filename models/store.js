@@ -8,11 +8,27 @@ const UserVariables = require("./schemaTypes/userSchemaType");
 const storeSchema = new Schema({
   stream_reducer: { type: Map, of: Stream },
   ui_reducer: {
+    chartStartYear: {
+      type: Number,
+      required: true,
+    },
+    chartEndYear: {
+      type: Number,
+      required: true,
+    },
     colorIndex: {
       type: Number,
       required: true,
     },
     dualSelectValue: {
+      type: Boolean,
+      required: true,
+    },
+    hasChildren: {
+      type: Boolean,
+      required: true,
+    },
+    isMarried: {
       type: Boolean,
       required: true,
     },
@@ -48,15 +64,17 @@ const storeSchema = new Schema({
       type: String,
       required: true,
     },
+    users: {
+      type: Array,
+      required: true,
+    },
   },
   user_reducer: {
-    desiredRetirementIncome: {
+    retIncome: {
       type: Number,
       required: true,
     },
-    hasChildrenStatus: {
-      type: String,
-    },
+
     inflationRate: {
       type: Number,
       required: true,
@@ -178,7 +196,7 @@ const storeSchema = new Schema({
 //   // userId: { type: ObjectID },
 // });
 
-module.exports = mongoose.model("Stream", storeSchema);
+module.exports = mongoose.model("Store", storeSchema);
 
 // const storeSchema = new Schema({
 //   ui_reducer: {

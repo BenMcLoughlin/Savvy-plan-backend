@@ -24,6 +24,9 @@ class UserVariables extends mongoose.SchemaType {
     if (!("cppStartAge" in userVariables)) throw new Error("UserVariables: " + userVariables + " is missing a cppStartAge");
     if (typeof userVariables.cppStartAge !== "number") throw new Error("UserVariables: " + userVariables.cppStartAge + " is not a number");
 
+    if (!("endWorking" in userVariables)) throw new Error("UserVariables: " + userVariables + " is missing a endWorking");
+    if (typeof userVariables.endWorking !== "number") throw new Error("UserVariables: " + userVariables.endWorking + " is not a number");
+
     if (!("firstName" in userVariables)) throw new Error("UserVariables: " + userVariables + " is missing first Name");
     if (typeof userVariables.firstName !== "number")
       throw new Error("UserVariables: " + userVariables.firstName + " firstName is not string");
@@ -39,6 +42,10 @@ class UserVariables extends mongoose.SchemaType {
 
     if (!("oasStartAge" in userVariables)) throw new Error("UserVariables: " + userVariables + " is missing a oasStartAge");
     if (typeof userVariables.oasStartAge !== "number") throw new Error("UserVariables: " + userVariables.oasStartAge + " is not a number");
+
+    if (!("startWorking" in userVariables)) throw new Error("UserVariables: " + userVariables + " is missing a startWorking");
+    if (typeof userVariables.startWorking !== "number")
+      throw new Error("UserVariables: " + userVariables.startWorking + " is not a number");
 
     return userVariables;
   }
